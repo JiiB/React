@@ -1,0 +1,27 @@
+.button {
+    background-color: rgb(10, 110, 10);
+    color: white;
+    border-color: black;
+    transition: 100ms ease-in-out;
+    box-shadow: 0 0 0 0 black;
+}
+
+.button:active, .button:focus, .button:hover {
+    color: white;
+}
+
+.button:hover {
+  box-shadow: 0 2px 10px -3px black;
+  background-color: rgb(24, 151, 24);
+}
+
+.button.red {
+  background-color: rgb(136, 8, 8);
+}
+.button.red:hover {
+  background-color: rgb(160, 13, 13);
+}
+
+.disabled {
+  cursor: not-allowed;
+}
