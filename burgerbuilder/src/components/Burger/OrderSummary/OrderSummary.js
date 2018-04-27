@@ -1,29 +1,38 @@
-import React from 'react';
-import Auxiliary from '../../../hoc/Auxiliary';
-import Button from '../../../components/UI/Button/Button';
+import React, { Component } from "react";
+import Button from "../../../components/UI/Button/Button";
 
-const orderSummary = (props) => {
-    const ingredientSummary = Object.keys(props.ingredients).map(igKey => {
-        return (
-            <li key={igKey}>
-                <span style={{ textTransform: 'capitalize' }}>{igKey}</span>:
-                {props.ingredients[igKey]}
-            </li>
-        )
-    })
+class OrderSummary extends Component {
+  componentWillUpdate() {
+      
+  }
+
+  render() {
+    const ingredientSummary = Object.keys(this.props.ingredients).map(igKey => {
+      return (
+        <li key={igKey}>
+          <span style={{ textTransform: "capitalize" }}>{igKey}</span>:
+          {this.props.ingredients[igKey]}
+        </li>
+      );
+    });
     return (
-        <Auxiliary>
-            <h3>Your Order</h3>
-            <p>A delicious burger with the following ingredients:</p>
-            <ul>
-                {ingredientSummary}
-            </ul>
-            <p><b>Total Price: {props.price.toFixed(2)}</b></p>
-            <p>Continue to Checkout?</p>
-            <Button clicked={props.purchaseCancelled} btnType="Danger">CANCEL</Button>
-            <Button clicked={props.purchaseContinued} btnType="Success">CONTINUE</Button>
-        </Auxiliary>
-    )
+      <React.Fragment>
+        <h3>Your Order</h3>
+        <p>A delicious burger with the following ingredients:</p>
+        <ul>{ingredientSummary}</ul>
+        <p>
+          <b>Total Price: {this.props.price.toFixed(2)}</b>
+        </p>
+        <p>Continue to Checkout?</p>
+        <Button clicked={this.props.purchaseCancelled} btnType="Danger">
+          CANCEL
+        </Button>
+        <Button clicked={this.props.purchaseContinued} btnType="Success">
+          CONTINUE
+        </Button>
+      </React.Fragment>
+    );
+  }
 }
 
-export default orderSummary
+export default OrderSummary;

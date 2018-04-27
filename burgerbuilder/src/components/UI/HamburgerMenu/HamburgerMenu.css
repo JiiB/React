@@ -1,0 +1,24 @@
+.HamburgerMenu {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.HamburgerMenu:hover{ 
+  justify-content: space-evenly
+}
+
+.HamburgerMenu span {
+  height: 3px;
+  width: 100%;
+  background-color: #ecdc01;
+  border-radius: 3px;
+}
+
+@media (min-width: 500px) {
+  .HamburgerMenu {
+      display: none;
+  }
+}

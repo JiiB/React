@@ -2,10 +2,11 @@ import React from "react";
 import classes from "./Toolbar.css";
 import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems/NavigationItems";
+import HamburgerMenu from '../../UI/HamburgerMenu/HamburgerMenu';
 
-const toolbar = props => (
+const toolbar = (props) => (
   <header className={classes.Toolbar}>
-    <div>MENU</div>
+    <HamburgerMenu clicked={props.clicked} />
     <div className={classes.Logo}>
       <Logo />
     </div>
