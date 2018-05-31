@@ -1,4 +1,10 @@
 {
   "editor.tabSize": 2,
-  "eslint.autoFixOnSave": true
+  "editor.formatOnSave": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#01169d",
+    "panel.background": "#191919",
+    "sideBar.background": "#252525",
+    "titleBar.activeBackground": "#0f1432"
+  }
 }
