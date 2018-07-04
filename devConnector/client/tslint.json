@@ -2,6 +2,9 @@
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": {
     "member-access": false,
+    "member-ordering": false,
+    "no-empty-interface": false,
+    "static-before-instance": false,
     "ordered-imports": false,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,

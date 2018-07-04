@@ -1,8 +1,14 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import * as classNames from "classnames";
-import axios from "axios";
+import { withRouter } from "react-router-dom";
+import { registerUser } from "../../../actions/authActions";
 
-class Register extends React.Component {
+interface IRegisterProps extends IStateProps, IDispatchProps {
+  history: any;
+}
+
+class Register extends React.Component<IRegisterProps, any> {
   state = {
     name: "",
     email: "",
@@ -15,6 +21,15 @@ class Register extends React.Component {
       password2: null
     }
   };
+
+  static getDerivedStateFromProps(nextProps: any, prevState: any) {
+    if (nextProps.errors) {
+      return {
+        errors: nextProps.errors
+      };
+    }
+    return null;
+  }
 
   onChangeHandler = (event: any) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -30,16 +45,12 @@ class Register extends React.Component {
       password2: this.state.password2
     };
 
-    console.log(newUser);
-
-    axios
-      .post("/api/users/register", newUser)
-      .then(res => console.log(res.data))
-      .catch(err => this.setState({ errors: err.response.data }));
+    this.props.registerUser(newUser, this.props.history);
   };
 
   render() {
     const { errors } = this.state;
+    console.log(this.props);
     return (
       <div className="register">
         <div className="container">
@@ -124,4 +135,25 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+interface IStateProps {
+  auth: any;
+  errors: any;
+}
+
+const mapStateToProps = (state: any): IStateProps => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+interface IDispatchProps {
+  registerUser(user: any, history: any): void;
+}
+
+const mapDispatchToProps: IDispatchProps = {
+  registerUser
+};
+
+export default connect<any>(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter<any>(Register));
